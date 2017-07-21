@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "github.com/Shopify/sarama": {
+            "branch": "master"
+        }
+    }
+}

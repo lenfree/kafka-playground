@@ -1,0 +1,77 @@
+{
+    "memo": "",
+    "projects": [
+        {
+            "name": "github.com/Shopify/sarama",
+            "branch": "master",
+            "revision": "2fd980e23bdcbb8edeb78fc704de0c39a6567ffc",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/davecgh/go-spew",
+            "branch": "master",
+            "revision": "adab96458c51a58dc1783b3335dcce5461522e75",
+            "packages": [
+                "spew"
+            ]
+        },
+        {
+            "name": "github.com/eapache/go-resiliency",
+            "branch": "master",
+            "revision": "b1fe83b5b03f624450823b751b662259ffc6af70",
+            "packages": [
+                "breaker"
+            ]
+        },
+        {
+            "name": "github.com/eapache/go-xerial-snappy",
+            "branch": "master",
+            "revision": "bb955e01b9346ac19dc29eb16586c90ded99a98c",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/eapache/queue",
+            "branch": "master",
+            "revision": "44cc805cf13205b55f69e14bcb69867d1ae92f98",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/golang/snappy",
+            "branch": "master",
+            "revision": "553a641470496b2327abcac10b36396bd98e45c9",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pierrec/lz4",
+            "branch": "master",
+            "revision": "5a3d2245f97fc249850e7802e3c01fad02a1c316",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/pierrec/xxHash",
+            "branch": "master",
+            "revision": "a0006b13c722f7f12368c00a3d3c2ae8a999a0c6",
+            "packages": [
+                "xxHash32"
+            ]
+        },
+        {
+            "name": "github.com/rcrowley/go-metrics",
+            "branch": "master",
+            "revision": "1f30fe9094a513ce4c700b9a54458bbb0c96996c",
+            "packages": [
+                "."
+            ]
+        }
+    ]
+}
