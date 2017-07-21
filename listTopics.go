@@ -34,25 +34,38 @@ func main() {
 	defer broker.Close()
 
 	req := sarama.MetadataRequest{Topics: topics}
-	meta, err := broker.GetMetadata(&req)
+	metadataResponse, err := broker.GetMetadata(&req)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	log.Printf("Number of res topicss #: %+#v\n", len(meta.Topics))
-	for _, topic := range meta.Topics {
-		// TODO: use regex instead
-		if strings.Contains(topic.Name, "_samza_checkpoint_ver_1_for_") && !strings.Contains(topic.Name, "vodka") && !strings.Contains(topic.Name, "lo-werphat") {
-			log.Printf("Got %s\n", topic.Name)
-		}
+	log.Printf("Number of res topics #: %+#v\n", len(metadataResponse.Topics))
 
-		if strings.Contains(topic.Name, "_samza_coordinator_") && !strings.Contains(topic.Name, "vodka") && !strings.Contains(topic.Name, "lo-werphat") {
-			log.Printf("Got %s\n", topic.Name)
-		}
-
-		if strings.Contains(topic.Name, "--samza-store") && !strings.Contains(topic.Name, "vodka") && !strings.Contains(topic.Name, "lo-werphat") {
-			log.Printf("Got %s\n", topic.Name)
-		}
+	topicName := make(chan string)
+	var filterTopic string
+	filterTopic = "lo-werphat"
+	for i := 1; i < 30; i++ {
+		go printTopics(topicName, filterTopic, i)
 	}
 
+	for _, topic := range metadataResponse.Topics {
+		topicName <- topic.Name
+	}
+}
+
+func printTopics(topics chan string, filterTopic string, routine int) {
+	// TODO: use regex instead
+	for topic := range topics {
+		if strings.Contains(topic, "_samza_checkpoint_ver_1_for_") && !strings.Contains(topic, filterTopic) {
+			log.Printf("Got %s === goroutine %d\n", topic, routine)
+		}
+
+		if strings.Contains(topic, "_samza_coordinator_") && !strings.Contains(topic, filterTopic) {
+			log.Printf("Got %s === goroutine %d\n", topic, routine)
+		}
+
+		if strings.Contains(topic, "--samza-store") && !strings.Contains(topic, filterTopic) {
+			log.Printf("Got %s === goroutine %d\n", topic, routine)
+		}
+	}
 }
